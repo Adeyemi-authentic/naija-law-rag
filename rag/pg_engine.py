@@ -75,6 +75,13 @@ class PgRetrievalEngine(RetrievalEngine):
         self.conn.commit()
         register_vector(self.conn)          # lets psycopg bind numpy arrays as vectors
 
+    def _reconnect(self):
+        try:
+            self.conn.close()
+        except psycopg.Error:
+            pass
+        self._open()
+
     def _ensure_live(self):
         """Ping the connection; reconnect if the pooler dropped it while idle."""
         try:
@@ -82,11 +89,25 @@ class PgRetrievalEngine(RetrievalEngine):
                 cur.execute("SELECT 1")
             self.conn.commit()
         except psycopg.Error:
+            self._reconnect()
+
+    def _query(self, sql, params=None):
+        """Run a read query, reconnecting once if the pooled connection was reaped.
+
+        A managed pooler (Neon, especially the free tier) closes a connection left
+        idle between requests; the first query afterward then fails with
+        'server closed the connection unexpectedly'. Retrying once on a fresh
+        connection makes retrieval resilient to that in the deployed app.
+        """
+        for attempt in (1, 2):
             try:
-                self.conn.close()
-            except psycopg.Error:
-                pass
-            self._open()
+                with self.conn.cursor() as cur:
+                    cur.execute(sql, params)
+                    return cur.fetchall()
+            except psycopg.OperationalError:
+                if attempt == 2:
+                    raise
+                self._reconnect()
 
     def close(self):
         self.conn.close()
@@ -154,9 +175,7 @@ class PgRetrievalEngine(RetrievalEngine):
         """
         if self._ids is not None:
             return
-        with self.conn.cursor() as cur:
-            cur.execute(f"SELECT id, source, chunk_text FROM {TABLE} ORDER BY id")
-            rows = cur.fetchall()
+        rows = self._query(f"SELECT id, source, chunk_text FROM {TABLE} ORDER BY id")
         self._ids = [r[0] for r in rows]
         self._sources = {r[0]: r[1] for r in rows}
         self._texts = {r[0]: r[2] for r in rows}
@@ -171,12 +190,11 @@ class PgRetrievalEngine(RetrievalEngine):
         smallest distance = most similar, matching Qdrant's COSINE metric.
         """
         qv, _ = embed([query], input_type="query")
-        with self.conn.cursor() as cur:
-            cur.execute(
-                f"SELECT id FROM {TABLE} ORDER BY embedding <=> %s",
-                (np.array(qv[0], dtype=np.float32),),
-            )
-            return [r[0] for r in cur.fetchall()]
+        rows = self._query(
+            f"SELECT id FROM {TABLE} ORDER BY embedding <=> %s",
+            (np.array(qv[0], dtype=np.float32),),
+        )
+        return [r[0] for r in rows]
 
 
 def _flat(text, n=110):
