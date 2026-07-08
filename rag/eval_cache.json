@@ -1,0 +1,177 @@
+{
+  "does the Constitution override other laws that conflict with it?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.62109375,
+    "text": "Yes, if any other law is inconsistent with the provisions of the Constitution, the Constitution shall prevail, and that other law shall, to the extent of the inconsistency, be void.",
+    "coverage": 1.0,
+    "citations": [
+      {
+        "n": 1,
+        "title": "constitution.txt",
+        "quote": "(3) If any other law is inconsistent with the provisions of this Constitution, this Constitution shall prevail, and that other law shall, to the extent of the inconsistency, be void."
+      }
+    ]
+  },
+  "what level of education must someone have to be elected President?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.56640625,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain information about educational qualifications for election to the House of Representatives and House of Assembly, but they do not include provisions regarding the educational qualifications required for election as President.",
+    "coverage": 0.0,
+    "citations": []
+  },
+  "does the Constitution protect the right to say what you think?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.5,
+    "text": "Yes, the Constitution protects freedom to hold opinions and to receive and impart ideas and information without interference.",
+    "coverage": 1.0,
+    "citations": [
+      {
+        "n": 4,
+        "title": "constitution.txt",
+        "quote": "dom to hold opinions and to receive and impart ideas and information without interference."
+      }
+    ]
+  },
+  "what does the Constitution say about a person's right to life?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.57421875,
+    "text": "According to the Nigerian Constitution, every person has a right to life, and no one shall be deprived intentionally of his life, save in execution of the sentence of a court in respect of a criminal offence of which he has been found guilty in Nigeria.\n\nHowever, a person shall not be regarded as having been deprived of his life in contravention of this section, if he dies as a result of the use, to such extent and in such circumstances as are permitted by law, of such force as is reasonably necessary \u2013 (a) for the defence of any person from unlawful violence or for the defence of property: (b) in order to effect a lawful arrest or to prevent the escape of a person lawfully detained; or (c) for the purpose of suppressing a riot, insurrection or mutiny.",
+    "coverage": 0.9855643044619422,
+    "citations": [
+      {
+        "n": 1,
+        "title": "constitution.txt",
+        "quote": "(1) Every person has a right to life, and no one shall be deprived intentionally of his life, save in execution of the sentence of a court in respect of a criminal offence of which he has been found guilty in Nigeria."
+      },
+      {
+        "n": 3,
+        "title": "constitution.txt",
+        "quote": "(2) A person shall not be regarded as having been deprived of his life in contravention of this section, if he dies as a result of the use, to such extent and in such circumstances as are permitted by law, of such force as is reasonably necessary \u2013 (a) for the defence of any person from unlawful violence or for the defence of property: (b) in order to effect a lawful arrest or to prevent the escape of a person lawfully detained; Or (c) for the purpose of suppressing a riot, insurrection or mutiny."
+      }
+    ]
+  },
+  "what is the standard rate of VAT in Nigeria?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.734375,
+    "text": "The standard rate of VAT in Nigeria is 7.5 percent. This rate has applied since 1 February 2020, when it was increased from 5 percent.",
+    "coverage": 0.9925373134328358,
+    "citations": [
+      {
+        "n": 1,
+        "title": "nigerian_tax.txt",
+        "quote": "The standard rate of VAT is 7.5 percent."
+      },
+      {
+        "n": 1,
+        "title": "nigerian_tax.txt",
+        "quote": "This rate has applied since 1 February 2020, when it was increased from 5 percent."
+      }
+    ]
+  },
+  "what rate of company income tax does a large Nigerian company pay?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.71875,
+    "text": "The rate of income tax for any Nigerian company other than a small company is 30 percent. The Act allows for a later reduction to 25 percent from a date to be specified in an order issued by the President on the advice of the National Economic Council.",
+    "coverage": 0.996031746031746,
+    "citations": [
+      {
+        "n": 1,
+        "title": "nigerian_tax.txt",
+        "quote": "The rate of income tax for any Nigerian company other than a small company is 30 percent."
+      },
+      {
+        "n": 1,
+        "title": "nigerian_tax.txt",
+        "quote": "The Act allows for a later reduction to 25 percent from a date to be specified in an order issued by the President on the advice of the National Economic Council."
+      }
+    ]
+  },
+  "what penalty applies to a taxable person who fails to register for tax?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.7578125,
+    "text": "A taxable person who fails or refuses to register for tax is liable to pay an administrative penalty of N50,000 in the first month in which the failure occurs, and N25,000 for each subsequent month in which the failure continues.",
+    "coverage": 1.0,
+    "citations": [
+      {
+        "n": 1,
+        "title": "tax_administration_act_2025.txt",
+        "quote": "APTER FOUR \u2014 OFFENCES AND PENALTIES PART I \u2014 OFFENCES AND PENALTIES OF GENERAL APPLICATION 100.\u2014(1) A taxable person who fails or refuses to register for tax under section 4 of this Act, shall be liable to pay an administrative penalty of \u2014 (a) N50,000 in the first month in which the failure occurs ; and (b) N25,000 for each subsequent month in which the failure continues."
+      }
+    ]
+  },
+  "how much notice must a landlord give a yearly tenant to quit in Lagos?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.58984375,
+    "text": "For a yearly tenant, a landlord must give six (6) months notice to determine the tenancy under Lagos tenancy law, where there is no stipulation as to the notice to be given by either party.",
+    "coverage": 1.0,
+    "citations": [
+      {
+        "n": 3,
+        "title": "lagos_tenancy_law.txt",
+        "quote": "13.-(1) where there is no stipulation as to the notice to be given by either party to determine the tenancy, the following shall apply- (a) a week\u2019s notice for a tenant at will; (b) one (1) month\u2019s notice for a monthly tenant; (c) three (3) months notice for a quarterly tenant; (d) three (3) months notice for a half-yearly tenant;"
+      }
+    ]
+  },
+  "which parts of Lagos are outside the Tenancy Law?": {
+    "refused": false,
+    "gated": false,
+    "top_score": 0.6484375,
+    "text": "The following areas are exempted from the application of the Lagos State Tenancy Law: Apapa, Ikeja GRA, Ikoyi, and Victoria Island. Additionally, the Governor may from time to time by Order published in the State Official Gazette exempt the application of this Law to any other area or premises in the State.",
+    "coverage": 1.0,
+    "citations": [
+      {
+        "n": 2,
+        "title": "lagos_tenancy_law.txt",
+        "quote": "(3) The following areas: (i) Apapa: (ii) Ikeja GRA.; (iii) Ikoyi; and (iv) Victoria Island are exempted from the application of this Law, however, the Governor may from time to time by Order published in the State Official Gazette exempt the application of this Law to any other area or premises in the State, 2.-(1) A Court shall have jurisdiction to determine matters in respect of the tenancy of any premises let before or after the commencement this Law."
+      }
+    ]
+  },
+  "what is the punishment for armed robbery under Nigerian law?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.56640625,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the 1999 Nigerian Constitution and the Tax Administration Act 2025. While they do address penalties for certain tax-related offenses and some armed offenses within the tax administration context, they do not contain provisions specifically addressing armed robbery under Nigerian law.\n\nTo obtain information about the punishment for armed robbery under Nigerian law, you would need to consult the Robbery and Firearms (Special Provisions) Act or other relevant criminal statutes.",
+    "coverage": 0.0,
+    "citations": []
+  },
+  "how do I register a company with the Corporate Affairs Commission?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.474609375,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided are excerpts from the Tax Administration Act 2025 and deal with tax registration and administration matters. They do not contain information about registering a company with the Corporate Affairs Commission (CAC). To find guidance on CAC company registration, you would need to consult the Companies and Allied Matters Act (CAMA) or CAC-specific regulations.",
+    "coverage": 0.0,
+    "citations": []
+  },
+  "what are the grounds for divorce in Nigeria?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.53515625,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the Lagos Tenancy Law and the 1999 Constitution, but they do not include information about the grounds for divorce in Nigeria. To get an accurate answer to your question, you would need to consult Nigerian family law legislation or matrimonial law statutes.",
+    "coverage": 0.0,
+    "citations": []
+  },
+  "how much stamp duty is payable on a tenancy agreement in Lagos?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.48046875,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nWhile the documents provided include the Lagos State Tenancy Law 2011 and contain information about stamp duty penalties in the Tax Administration Act 2025, they do not specify the actual amount or rate of stamp duty payable on tenancy agreements in Lagos.",
+    "coverage": 0.0,
+    "citations": []
+  },
+  "what is the current exchange rate of the naira to the US dollar?": {
+    "refused": true,
+    "gated": false,
+    "top_score": 0.45703125,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from Nigerian tax and tenancy legislation, but they do not include information about current exchange rates between the Nigerian naira and the US dollar.",
+    "coverage": 0.0,
+    "citations": []
+  }
+}

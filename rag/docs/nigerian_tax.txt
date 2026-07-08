@@ -1,0 +1,61 @@
+Nigerian Federal Tax: Key Provisions (Personal Income Tax, Companies Income Tax, VAT).
+Status: reflects the Nigeria Tax Act 2025 (NTA), which took effect on 1 January 2026 and
+consolidated and replaced the former Personal Income Tax Act, Companies Income Tax Act,
+and Value Added Tax Act. This is a plain-language reference summary of the main rules with
+their figures as at 2026. It is legal and tax information only, not advice; consult the
+Nigeria Revenue Service (NRS) or a professional for any specific situation.
+
+Personal Income Tax (PIT): who pays. An individual who is resident in Nigeria is taxed on
+worldwide income. For employment income, tax applies where the individual is resident in
+Nigeria and performs duties wholly or partly in Nigeria. Personal income tax on employees
+is collected by employers through the Pay As You Earn (PAYE) system.
+
+Personal Income Tax: minimum-wage exemption. Employees who earn no more than the national
+minimum wage (70,000 naira) are no longer liable to personal income tax or to deduction of
+monthly PAYE.
+
+Personal Income Tax: annual tax bands and rates (2026). The first 800,000 naira of annual
+taxable income is taxed at 0 percent. The next 2,200,000 naira is taxed at 15 percent. The
+next 9,000,000 naira is taxed at 18 percent. The next 13,000,000 naira is taxed at 21
+percent. The next 25,000,000 naira is taxed at 23 percent. Any income above 50,000,000
+naira is taxed at 25 percent. The expanded 0 percent band replaces the previous 1 percent
+minimum tax rule.
+
+Personal Income Tax: rent relief. A rent relief is allowed of 20 percent of annual rent
+paid, up to a maximum of 500,000 naira. This replaces the former consolidated relief
+allowance under the Personal Income Tax Act.
+
+Personal Income Tax: termination benefits. Compensation for loss of employment is a
+chargeable gain only to the extent it exceeds 50,000,000 naira (raised from the former
+10,000,000 naira threshold).
+
+Companies Income Tax (CIT): small company rate. A small company, defined as a company with
+annual turnover not exceeding 50,000,000 naira and fixed assets below 250,000,000 naira,
+pays companies income tax at 0 percent. Companies that provide professional services are
+excluded from this small-company relief.
+
+Companies Income Tax: standard rate. The rate of income tax for any Nigerian company other
+than a small company is 30 percent. The Act allows for a later reduction to 25 percent from
+a date to be specified in an order issued by the President on the advice of the National
+Economic Council.
+
+Development levy. The Act introduces a single 4 percent development levy on the assessable
+profits of companies, replacing several earmarked taxes such as the tertiary education tax
+and the Nigeria Police Trust Fund levy. Small companies and non-resident companies are
+excluded from the development levy.
+
+Value Added Tax (VAT): rate. The standard rate of VAT is 7.5 percent. This rate has applied
+since 1 February 2020, when it was increased from 5 percent.
+
+Value Added Tax: zero-rated supplies. The following are taxed at 0 percent: basic food
+items on a defined list, medical products and services, pharmaceutical products, books and
+educational materials, exported services, goods and services purchased by diplomats, and
+goods purchased for use in humanitarian donor-funded projects.
+
+Value Added Tax: exempt supplies. Plant and machinery for use in an export processing zone
+or a free trade zone are exempt from VAT.
+
+Value Added Tax: input VAT recovery. Businesses may claim input VAT on services and on
+capital assets such as fixed-asset purchases, not only on goods and materials for
+production or resale. A reverse-charge mechanism applies to services for which no tax
+invoice was received.
