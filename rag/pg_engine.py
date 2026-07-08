@@ -54,28 +54,57 @@ class PgRetrievalEngine(RetrievalEngine):
     """
 
     def __init__(self, dsn=None):
+        self.dsn = dsn or os.environ["DATABASE_URL"]
+        self._open()
+        self.collection = TABLE
+        # same corpus-cache slots the parent uses (filled lazily by _load)
+        self._ids = self._sources = self._texts = self._bm25 = None
+
+    def _open(self):
+        """(Re)establish the connection, ensure the vector type, register it.
+
+        Isolated so build() can reconnect after a long embedding pause -- a
+        managed pooler (Neon) reaps a connection left idle, so we do not trust
+        the same socket to survive minutes of Voyage calls.
+        """
         # connect_timeout so a DNS/network blip fails fast instead of hanging
         # (Neon is remote; the free tier occasionally drops a lookup).
-        self.conn = psycopg.connect(dsn or os.environ["DATABASE_URL"], connect_timeout=15)
-        # The `vector` type must exist before we can register its adapter.
+        self.conn = psycopg.connect(self.dsn, connect_timeout=15)
         with self.conn.cursor() as cur:
             cur.execute("CREATE EXTENSION IF NOT EXISTS vector;")
         self.conn.commit()
         register_vector(self.conn)          # lets psycopg bind numpy arrays as vectors
-        self.collection = TABLE
-        # same corpus-cache slots the parent uses (filled lazily by _load)
-        self._ids = self._sources = self._texts = self._bm25 = None
+
+    def _ensure_live(self):
+        """Ping the connection; reconnect if the pooler dropped it while idle."""
+        try:
+            with self.conn.cursor() as cur:
+                cur.execute("SELECT 1")
+            self.conn.commit()
+        except psycopg.Error:
+            try:
+                self.conn.close()
+            except psycopg.Error:
+                pass
+            self._open()
 
     def close(self):
         self.conn.close()
 
     # ingest --------------------------------------------------------------
     def build(self, docs_dir=DOCS_DIR):
-        """Create the chunks table and ingest every .txt in docs_dir. Idempotent.
+        """Create the chunks table and ingest every doc in docs_dir. Idempotent.
 
         Chunks are produced by the SAME smart_chunks() Qdrant used and inserted
         with explicit 0-based ids in the same order, so ids line up 1:1 across
         both stores -- which makes the parity check apples-to-apples.
+
+        CRITICAL ORDERING: embed BEFORE opening the write transaction. Embedding a
+        large corpus takes minutes; a managed pooler (Neon) terminates a
+        connection left idle-in-transaction, so holding a transaction open across
+        the Voyage calls would kill the build. So: create table + count + commit,
+        release the transaction, embed with no transaction held, then insert in
+        one quick burst (reconnecting first in case the idle socket was reaped).
         """
         with self.conn.cursor() as cur:
             cur.execute(f"""
@@ -88,22 +117,24 @@ class PgRetrievalEngine(RetrievalEngine):
             """)
             cur.execute(f"SELECT count(*) FROM {TABLE}")
             existing = cur.fetchone()[0]
-            if existing:
-                print(f"Index already built: '{TABLE}' has {existing} chunks.")
-                self.conn.commit()
-                return
+        self.conn.commit()          # release the transaction before the long embed
+        if existing:
+            print(f"Index already built: '{TABLE}' has {existing} chunks.")
+            return
 
-            records = []   # (source, chunk_text), same as the Qdrant build
-            docs = list(load_documents(docs_dir))
-            for name, text in docs:
-                for chunk in smart_chunks(text):
-                    records.append((name, chunk))
+        records = []   # (source, chunk_text), same as the Qdrant build
+        docs = list(load_documents(docs_dir))
+        for name, text in docs:
+            for chunk in smart_chunks(text):
+                records.append((name, chunk))
 
-            texts = [c for _s, c in records]
-            print(f"Embedding {len(texts)} chunks from {len(docs)} docs...")
-            vectors, tokens = embed(texts, input_type="document")
-            print(f"  embedded ({tokens} tokens).")
+        texts = [c for _s, c in records]
+        print(f"Embedding {len(texts)} chunks from {len(docs)} docs...")
+        vectors, tokens = embed(texts, input_type="document")   # no open transaction here
+        print(f"  embedded ({tokens} tokens).")
 
+        self._ensure_live()         # the idle connection may have been reaped during embed
+        with self.conn.cursor() as cur:
             for i, ((source, chunk), vec) in enumerate(zip(records, vectors)):
                 cur.execute(
                     f"INSERT INTO {TABLE} (id, source, chunk_text, embedding) VALUES (%s, %s, %s, %s)",
