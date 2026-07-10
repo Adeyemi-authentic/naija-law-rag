@@ -1,7 +1,7 @@
 # Naija Law RAG
 
 A document-intelligence assistant that answers questions about **Nigerian law**
-— the 1999 Constitution, federal tax legislation, and Lagos State tenancy law —
+the 1999 Constitution, federal tax legislation, and Lagos State tenancy law
 **strictly from the source documents**, cites every claim to a verified span,
 **refuses** what the documents do not cover, and **streams** its answer behind a
 hardened API.
