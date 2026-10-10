@@ -37,28 +37,42 @@
     .sources .title { color:var(--muted); }
     .sources .quote { display:block; margin-top:3px; color:var(--text); }
     .err { color:#ff7a7a; }
+    .examples { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 4px; }
+    .examples button { background:transparent; border-color:var(--line); color:var(--muted);
+                       font-weight:400; font-size:13px; padding:5px 10px; border-radius:999px;
+                       max-width:100%; text-align:left; }
+    .examples button:hover { color:var(--text); border-color:var(--accent); }
+    .hint { color:var(--muted); font-size:12px; margin:4px 0 12px; }
+    details.key { color:var(--muted); font-size:12px; margin-top:28px; }
+    details.key input { width:100%; margin-top:8px; }
   </style>
 </head>
 <body>
   <main>
     <h1>Naija Law RAG</h1>
-    <p class="sub">Ask about Nigerian law &mdash; the 1999 Constitution, tax legislation, and tenancy law.
-       Answers are grounded strictly in the source documents and every claim is cited to a verified span;
-       questions the documents don't cover are refused rather than guessed.
-       This is legal <em>information</em>, not legal advice.</p>
+    <p class="sub">Ask about Nigerian law: the 1999 Constitution, tax legislation, and Lagos tenancy law. Every answer is grounded in the source documents and each claim is cited to a verified passage; questions the documents don&rsquo;t cover are declined rather than guessed. This is legal <em>information</em>, not legal advice.</p>
 
-    <div class="keyrow">
-      <input id="key" type="password" placeholder="X-API-Key" autocomplete="off" />
+    <div class="examples" id="examples">
+      <button type="button">How much notice must a landlord give a yearly tenant to quit in Lagos?</button>
+      <button type="button">What is the standard rate of VAT in Nigeria?</button>
+      <button type="button">What penalty applies to a taxable person who fails to register for tax?</button>
+      <button type="button">What are the grounds for divorce in Nigeria?</button>
     </div>
+    <p class="hint">Try an example, or ask your own. Public demo: a few questions a minute.</p>
 
     <div class="askrow">
-      <textarea id="q" placeholder="e.g. What are the qualifications to be elected President of Nigeria?"></textarea>
+      <textarea id="q" maxlength="500" placeholder="e.g. What are the qualifications to be elected President of Nigeria?"></textarea>
       <button id="send">Ask</button>
     </div>
 
     <div id="answer" class="answer">Your answer will stream here.</div>
     <div id="meta" class="meta"></div>
     <ul id="sources" class="sources"></ul>
+
+    <details class="key">
+      <summary>Have an API key?</summary>
+      <input id="key" type="password" placeholder="X-API-Key (optional, skips the public limits)" autocomplete="off" />
+    </details>
   </main>
 
   <script>
@@ -66,17 +80,20 @@
     const keyEl = $("key"), qEl = $("q"), sendEl = $("send");
     const answerEl = $("answer"), metaEl = $("meta"), sourcesEl = $("sources");
 
-    // The X-API-Key is supplied by whoever runs this instance. It is remembered
-    // in localStorage so you only paste it once. Set a public demo key here if
-    // you want the live page to be self-serve (it will be shared + rate-limited).
+    // No key needed: the server's public mode is rate-limited and budget-capped.
+    // An owner key (optional) is remembered locally and skips the public limits.
     keyEl.value = localStorage.getItem("apiKey") || "";
-    keyEl.addEventListener("change", () => localStorage.setItem("apiKey", keyEl.value));
+    keyEl.addEventListener("change", () => localStorage.setItem("apiKey", keyEl.value.trim()));
+    $("examples").addEventListener("click", (e) => {
+      if (e.target.tagName !== "BUTTON") return;
+      qEl.value = e.target.textContent;
+      ask();
+    });
 
     async function ask() {
       const question = qEl.value.trim();
       const key = keyEl.value.trim();
-      if (!question) return;
-      if (!key) return fail("Enter your X-API-Key above first.");
+      if (!question || sendEl.disabled) return;
 
       // reset UI
       answerEl.textContent = "";
@@ -91,7 +108,8 @@
         // EventSource can do neither.
         resp = await fetch("/chat/stream", {
           method: "POST",
-          headers: { "Content-Type": "application/json", "X-API-Key": key },
+          headers: key ? { "Content-Type": "application/json", "X-API-Key": key }
+                       : { "Content-Type": "application/json" },
           body: JSON.stringify({ question }),
         });
       } catch (e) {

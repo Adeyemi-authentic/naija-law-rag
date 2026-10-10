@@ -48,6 +48,16 @@ from engine import RetrievalEngine                              # noqa: E402
 from contextualize import contextualize                         # noqa: E402
 
 MODEL = "claude-haiku-4-5"
+# Claude Haiku 4.5 list prices (USD per token), for the public demo's daily
+# spending cap. Update both if MODEL changes.
+PRICE_IN = 1.00 / 1_000_000
+PRICE_OUT = 5.00 / 1_000_000
+
+
+def cost_of(usage):
+    """USD cost of one Messages API call from its usage block."""
+    return usage.input_tokens * PRICE_IN + usage.output_tokens * PRICE_OUT
+
 DONT_KNOW = "I can't answer that from the available Nigerian legal documents."
 
 # Re-measured for THIS corpus (rag/tune_gate.py / D3). The bands OVERLAP here:
@@ -132,7 +142,7 @@ def answer(engine, client, query):
         return {
             "refused": True, "gated": True, "top_score": top_score,
             "text": DONT_KNOW, "citations": [], "coverage": 0.0,
-            "flagged": False, "passages": passages,
+            "flagged": False, "passages": passages, "cost": 0.0,
         }
 
     response = generate(client, query, passages)
@@ -151,6 +161,7 @@ def answer(engine, client, query):
         "refused": refused, "gated": False, "top_score": top_score,
         "text": text, "citations": citations, "coverage": coverage,
         "flagged": flagged, "passages": passages,
+        "cost": cost_of(response.usage),
     }
 
 

@@ -71,7 +71,7 @@ python rag/evaluate.py        # reproduce the eval numbers
 uvicorn app:app --reload --app-dir app
 ```
 
-Then open http://localhost:8000, paste your `API_KEY`, and ask a question.
+Then open http://localhost:8000 and ask a question (no key needed in public mode).
 
 ## Evaluation
 
@@ -91,6 +91,22 @@ different offices, and the assistant declines rather than risk attributing the
 House-of-Assembly rule to the President — cautious behaviour that is the right
 default for law. Rerank scores vary slightly run to run, so numbers can move by
 one; delete `rag/eval_cache.json` to re-measure.
+
+## Public demo mode
+
+The live page is self-serve: visitors ask questions with no key. `PUBLIC_MODE=1` (the default) protects it
+with three locks:
+
+| Lock | Default | Env var |
+|---|---|---|
+| Questions per visitor (IP) per minute | 5 | `PUBLIC_RATE_LIMIT`, `PUBLIC_RATE_WINDOW` |
+| Questions per visitor per day | 30 | `PUBLIC_DAILY_LIMIT` |
+| Estimated AI spend per day, all visitors | $1.00 | `DAILY_BUDGET_USD` |
+
+Questions are capped at 500 characters. An `X-API-Key` header with the right `API_KEY` skips the per-visitor
+limits and the spending cap (owner access); a wrong key is rejected. Set `PUBLIC_MODE=0` to require the key
+again. Behind Render's proxy the visitor IP comes from `X-Forwarded-For` (`TRUST_PROXY=1`, the default); the
+daily spending cap is the hard ceiling on cost either way.
 
 ## Deploy (Render + managed pgvector)
 
