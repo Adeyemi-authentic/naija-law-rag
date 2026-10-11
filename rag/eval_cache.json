@@ -2,7 +2,7 @@
   "does the Constitution override other laws that conflict with it?": {
     "refused": false,
     "gated": false,
-    "top_score": 0.62109375,
+    "top_score": 0.6171875,
     "text": "Yes, if any other law is inconsistent with the provisions of the Constitution, the Constitution shall prevail, and that other law shall, to the extent of the inconsistency, be void.",
     "coverage": 1.0,
     "citations": [
@@ -16,31 +16,31 @@
   "what level of education must someone have to be elected President?": {
     "refused": true,
     "gated": false,
-    "top_score": 0.56640625,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain information about educational qualifications for election to the House of Representatives and House of Assembly, but they do not include provisions regarding the educational qualifications required for election as President.",
+    "top_score": 0.5703125,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain qualifications for election to the House of Representatives and House of Assembly, which include educational requirements at the School Certificate level. However, they do not contain specific information about the educational qualifications required for election as President.",
     "coverage": 0.0,
     "citations": []
   },
   "does the Constitution protect the right to say what you think?": {
     "refused": false,
     "gated": false,
-    "top_score": 0.5,
-    "text": "Yes, the Constitution protects freedom to hold opinions and to receive and impart ideas and information without interference.",
+    "top_score": 0.50390625,
+    "text": "Yes, the Constitution protects the right to hold opinions and to receive and impart ideas and information without interference.",
     "coverage": 1.0,
     "citations": [
       {
-        "n": 4,
+        "n": 5,
         "title": "constitution.txt",
-        "quote": "dom to hold opinions and to receive and impart ideas and information without interference."
+        "quote": "to hold opinions and to receive and impart ideas and information without interference."
       }
     ]
   },
   "what does the Constitution say about a person's right to life?": {
     "refused": false,
     "gated": false,
-    "top_score": 0.57421875,
-    "text": "According to the Nigerian Constitution, every person has a right to life, and no one shall be deprived intentionally of his life, save in execution of the sentence of a court in respect of a criminal offence of which he has been found guilty in Nigeria.\n\nHowever, a person shall not be regarded as having been deprived of his life in contravention of this section, if he dies as a result of the use, to such extent and in such circumstances as are permitted by law, of such force as is reasonably necessary \u2013 (a) for the defence of any person from unlawful violence or for the defence of property: (b) in order to effect a lawful arrest or to prevent the escape of a person lawfully detained; or (c) for the purpose of suppressing a riot, insurrection or mutiny.",
-    "coverage": 0.9855643044619422,
+    "top_score": 0.5703125,
+    "text": "Every person has a right to life, and no one shall be deprived intentionally of his life, save in execution of the sentence of a court in respect of a criminal offence of which he has been found guilty in Nigeria.\n\nAdditionally, a person shall not be regarded as having been deprived of his life in contravention of this section, if he dies as a result of the use, to such extent and in such circumstances as are permitted by law, of such force as is reasonably necessary for the defence of any person from unlawful violence or for the defence of property, in order to effect a lawful arrest or to prevent the escape of a person lawfully detained, or for the purpose of suppressing a riot, insurrection or mutiny.",
+    "coverage": 0.9775596072931276,
     "citations": [
       {
         "n": 1,
@@ -48,7 +48,7 @@
         "quote": "(1) Every person has a right to life, and no one shall be deprived intentionally of his life, save in execution of the sentence of a court in respect of a criminal offence of which he has been found guilty in Nigeria."
       },
       {
-        "n": 3,
+        "n": 5,
         "title": "constitution.txt",
         "quote": "(2) A person shall not be regarded as having been deprived of his life in contravention of this section, if he dies as a result of the use, to such extent and in such circumstances as are permitted by law, of such force as is reasonably necessary \u2013 (a) for the defence of any person from unlawful violence or for the defence of property: (b) in order to effect a lawful arrest or to prevent the escape of a person lawfully detained; Or (c) for the purpose of suppressing a riot, insurrection or mutiny."
       }
@@ -96,27 +96,27 @@
     "refused": false,
     "gated": false,
     "top_score": 0.7578125,
-    "text": "A taxable person who fails or refuses to register for tax is liable to pay an administrative penalty of N50,000 in the first month in which the failure occurs, and N25,000 for each subsequent month in which the failure continues.",
+    "text": "A taxable person who fails or refuses to register for tax shall be liable to pay an administrative penalty of N50,000 in the first month in which the failure occurs, and N25,000 for each subsequent month in which the failure continues.",
     "coverage": 1.0,
     "citations": [
       {
         "n": 1,
         "title": "tax_administration_act_2025.txt",
-        "quote": "APTER FOUR \u2014 OFFENCES AND PENALTIES PART I \u2014 OFFENCES AND PENALTIES OF GENERAL APPLICATION 100.\u2014(1) A taxable person who fails or refuses to register for tax under section 4 of this Act, shall be liable to pay an administrative penalty of \u2014 (a) N50,000 in the first month in which the failure occurs ; and (b) N25,000 for each subsequent month in which the failure continues."
+        "quote": "FOUR \u2014 OFFENCES AND PENALTIES PART I \u2014 OFFENCES AND PENALTIES OF GENERAL APPLICATION 100.\u2014(1) A taxable person who fails or refuses to register for tax under section 4 of this Act, shall be liable to pay an administrative penalty of \u2014 (a) N50,000 in the first month in which the failure occurs ; and (b) N25,000 for each subsequent month in which the failure continues."
       }
     ]
   },
   "how much notice must a landlord give a yearly tenant to quit in Lagos?": {
     "refused": false,
     "gated": false,
-    "top_score": 0.58984375,
-    "text": "For a yearly tenant, a landlord must give six (6) months notice to determine the tenancy under Lagos tenancy law, where there is no stipulation as to the notice to be given by either party.",
+    "top_score": 0.59375,
+    "text": "A landlord must give six months notice to a yearly tenant to quit in Lagos.",
     "coverage": 1.0,
     "citations": [
       {
-        "n": 3,
+        "n": 1,
         "title": "lagos_tenancy_law.txt",
-        "quote": "13.-(1) where there is no stipulation as to the notice to be given by either party to determine the tenancy, the following shall apply- (a) a week\u2019s notice for a tenant at will; (b) one (1) month\u2019s notice for a monthly tenant; (c) three (3) months notice for a quarterly tenant; (d) three (3) months notice for a half-yearly tenant;"
+        "quote": "(d) three (3) months notice for a half-yearly tenant; and (e) six months notice for a yearly tenant (2) In the case of a monthly tenancy, where the tenant is in arrears of rent for six (6) months, the tenancy shall lapse and the Court shall make an order for possession and arrears of rent upon proof of the arrears by the landlord."
       }
     ]
   },
@@ -124,7 +124,7 @@
     "refused": false,
     "gated": false,
     "top_score": 0.6484375,
-    "text": "The following areas are exempted from the application of the Lagos State Tenancy Law: Apapa, Ikeja GRA, Ikoyi, and Victoria Island. Additionally, the Governor may from time to time by Order published in the State Official Gazette exempt the application of this Law to any other area or premises in the State.",
+    "text": "The following areas are exempted from the application of the Lagos State Tenancy Law: Apapa, Ikeja GRA, Ikoyi, and Victoria Island. However, the Governor may from time to time by Order published in the State Official Gazette exempt the application of this Law to any other area or premises in the State.",
     "coverage": 1.0,
     "citations": [
       {
@@ -138,23 +138,23 @@
     "refused": true,
     "gated": false,
     "top_score": 0.56640625,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the 1999 Nigerian Constitution and the Tax Administration Act 2025. While they do address penalties for certain tax-related offenses and some armed offenses within the tax administration context, they do not contain provisions specifically addressing armed robbery under Nigerian law.\n\nTo obtain information about the punishment for armed robbery under Nigerian law, you would need to consult the Robbery and Firearms (Special Provisions) Act or other relevant criminal statutes.",
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the Tax Administration Act 2025 and the 1999 Constitution, which do not address armed robbery. To answer your question about the punishment for armed robbery under Nigerian law, you would need to consult the Penal Code or Criminal Code, which are not included in the available documents.",
     "coverage": 0.0,
     "citations": []
   },
   "how do I register a company with the Corporate Affairs Commission?": {
     "refused": true,
     "gated": false,
-    "top_score": 0.474609375,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided are excerpts from the Tax Administration Act 2025 and deal with tax registration and administration matters. They do not contain information about registering a company with the Corporate Affairs Commission (CAC). To find guidance on CAC company registration, you would need to consult the Companies and Allied Matters Act (CAMA) or CAC-specific regulations.",
+    "top_score": 0.47265625,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the Tax Administration Act 2025 and relate to tax registration, returns, and compliance requirements. They do not contain information about registering a company with the Corporate Affairs Commission (CAC), which is a separate regulatory process governed by different legislation.",
     "coverage": 0.0,
     "citations": []
   },
   "what are the grounds for divorce in Nigeria?": {
     "refused": true,
     "gated": false,
-    "top_score": 0.53515625,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the Lagos Tenancy Law and the 1999 Constitution, but they do not include information about the grounds for divorce in Nigeria. To get an accurate answer to your question, you would need to consult Nigerian family law legislation or matrimonial law statutes.",
+    "top_score": 0.546875,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from the 1999 Constitution, tax legislation, and tenancy law, but they do not include any information about the grounds for divorce in Nigeria.",
     "coverage": 0.0,
     "citations": []
   },
@@ -162,15 +162,15 @@
     "refused": true,
     "gated": false,
     "top_score": 0.48046875,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nWhile the documents provided include the Lagos State Tenancy Law 2011 and contain information about stamp duty penalties in the Tax Administration Act 2025, they do not specify the actual amount or rate of stamp duty payable on tenancy agreements in Lagos.",
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe provided documents include the Lagos State Tenancy Law 2011 and excerpts from the Tax Administration Act 2025, but neither contains specific information about the amount of stamp duty payable on tenancy agreements in Lagos.",
     "coverage": 0.0,
     "citations": []
   },
   "what is the current exchange rate of the naira to the US dollar?": {
     "refused": true,
     "gated": false,
-    "top_score": 0.45703125,
-    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided contain excerpts from Nigerian tax and tenancy legislation, but they do not include information about current exchange rates between the Nigerian naira and the US dollar.",
+    "top_score": 0.458984375,
+    "text": "I can't answer that from the available Nigerian legal documents.\n\nThe documents provided are excerpts from Nigerian tax and tenancy legislation, and they do not contain information about current exchange rates between the naira and the US dollar.",
     "coverage": 0.0,
     "citations": []
   }

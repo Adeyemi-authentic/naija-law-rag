@@ -91,6 +91,9 @@ pointer in the reference repo.
 ### A1. Smart chunking  (`rag/engine.py: smart_chunks`)
 - WHAT: split each document into ~`CHUNK_SIZE`-char pieces, **paragraph-aware**
   (never mid-paragraph), carrying ~`OVERLAP` of the previous chunk into the next.
+  The overlap is whole trailing sentences (whole words as a fallback), never a raw
+  character slice: a chunk that starts mid-word ("onths notice...") is exactly what
+  a citation quotes back to the user.
 - WHY: embeddings represent a *span* of text; too big dilutes the signal, too small
   loses context. Paragraph boundaries keep ideas intact; overlap prevents a fact
   from being severed at a chunk edge.

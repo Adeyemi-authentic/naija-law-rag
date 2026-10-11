@@ -64,11 +64,38 @@ def _split_long(para, size):
     out = []
     for p in pieces:
         while len(p) > size * 1.5:
-            out.append(p[:size])
-            p = p[size:]
+            # Cut at the last space before `size` so no word is severed.
+            cut = p.rfind(" ", 0, size)
+            if cut <= 0:
+                cut = size
+            out.append(p[:cut].strip())
+            p = p[cut:].strip()
         if p.strip():
             out.append(p)
     return out
+
+
+_SENT_BOUNDARY = re.compile(r"(?<=[.;:])\s+|\n\n")
+
+
+def _overlap_tail(text, budget):
+    """The longest suffix of `text` within `budget` chars that starts cleanly.
+
+    Prefers whole trailing sentences; if even the last sentence is longer than
+    the budget, falls back to whole trailing words. A raw character slice would
+    start the next chunk mid-word ("onths notice..."), and that fragment is
+    what a citation quotes back to the user.
+    """
+    if budget <= 0 or not text:
+        return ""
+    starts = [m.end() for m in _SENT_BOUNDARY.finditer(text)]
+    for s in starts:
+        if len(text) - s <= budget:
+            return text[s:].strip()
+    for m in re.finditer(r"\s+", text):
+        if len(text) - m.end() <= budget:
+            return text[m.end():].strip()
+    return ""
 
 
 def smart_chunks(text, size=CHUNK_SIZE, overlap=OVERLAP):
@@ -83,8 +110,8 @@ def smart_chunks(text, size=CHUNK_SIZE, overlap=OVERLAP):
         for piece in _split_long(para, size):
             if current and len(current) + len(piece) + 2 > size:
                 chunks.append(current.strip())
-                tail = current[-int(size * overlap):]
-                current = tail + "\n\n" + piece
+                tail = _overlap_tail(current, int(size * overlap))
+                current = (tail + "\n\n" + piece) if tail else piece
             else:
                 current = (current + "\n\n" + piece) if current else piece
     if current.strip():
